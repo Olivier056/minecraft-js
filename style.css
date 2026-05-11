@@ -1,0 +1,200 @@
+* {
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Segoe UI", sans-serif;
+  background: #87ceeb;
+  color: #fff;
+}
+#overlay {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 12px;
+  max-width: 320px;
+  line-height: 1.5;
+}
+#overlay h1 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+#overlay p {
+  margin: 6px 0;
+  font-size: 14px;
+}
+#overlay label {
+  display: block;
+  margin: 10px 0;
+  font-size: 14px;
+}
+#overlay select, #overlay button {
+  padding: 8px 12px;
+  margin: 8px 4px 8px 0;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+#overlay button:hover {
+  background: #45a049;
+}
+#download-btn {
+  background: #2196F3;
+}
+#download-btn:hover {
+  background: #0b7dda;
+}
+canvas {
+  display: block;
+}
+#crosshair {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  margin-top: -8px;
+  pointer-events: none;
+}
+#crosshair:before, #crosshair:after {
+  content: "";
+  position: absolute;
+  background: rgba(255,255,255,0.9);
+}
+#crosshair:before {
+  left: 7px;
+  top: 0;
+  width: 2px;
+  height: 16px;
+}
+#crosshair:after {
+  left: 0;
+  top: 7px;
+  width: 16px;
+  height: 2px;
+}
+#inventory {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 12px;
+  align-items: center;
+}
+.slot {
+  width: 60px;
+  min-width: 60px;
+  padding: 8px;
+  border: 2px solid rgba(255,255,255,0.45);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 12px;
+  background: rgba(255,255,255,0.08);
+}
+.slot.selected {
+  border-color: #ffd700;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.35);
+}
+.slot .icon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  background-size: cover;
+  background-position: center;
+}
+.slot .count {
+  margin-top: 2px;
+  font-size: 11px;
+}
+#bars {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#health-bar, #hunger-bar {
+  width: 200px;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 10px;
+  overflow: hidden;
+}
+#health-bar::before, #hunger-bar::before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: var(--health, 100%);
+  background: linear-gradient(to right, #ff0000, #00ff00);
+  transition: width 0.3s;
+}
+#hunger-bar::before {
+  width: var(--hunger, 100%);
+  background: linear-gradient(to right, #8B4513, #FFD700);
+}
+
+#inventory-menu {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background: rgba(0, 0, 0, 0.9);
+  border: 3px solid #8B7355;
+  border-radius: 10px;
+  padding: 20px;
+  display: none;
+  z-index: 1000;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+#inventory-menu.open {
+  display: block;
+}
+
+#inventory-menu h2 {
+  text-align: center;
+  margin-top: 0;
+  color: #fff;
+}
+
+#inventory-items {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.inventory-item {
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid #666;
+  border-radius: 5px;
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.inventory-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffd700;
