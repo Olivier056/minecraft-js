@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini Voxel Sandbox</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="overlay">
+    <h1>Mini Voxel Sandbox</h1>
+    <p>Bienvenue dans le jeu !</p>
+    <label for="difficulty">Difficulté: 
+      <select id="difficulty">
+        <option value="1">Facile</option>
+        <option value="2" selected>Normal</option>
+        <option value="3">Difficile</option>
+      </select>
+    </label>
+    <button id="start-btn">Commencer</button>
+    <button id="download-btn">Télécharger le jeu</button>
+    <p>Instructions:</p>
+    <p>Clique pour commencer. WASD pour avancer, espace pour sauter, clic gauche pour casser.</p>
+    <p>Shift + clic: poser un bloc. Touches 1-9: changer le bloc sélectionné.</p>
+    <p>E: ouvrir/fermer l'inventaire. M: changer de mode (survie/créatif). D: changer difficulté.</p>
+    <p>Clic droit: utiliser/eat si nourriture.</p>
+    <p>Échap pour relâcher la souris.</p>
+  </div>
+  <p id="status"></p>
+  <div id="inventory"></div>
+  <div id="inventory-menu">
+    <h2>Inventaire</h2>
+    <div id="inventory-items"></div>
+  </div>
+  <div id="bars">
+    <div id="health-bar"></div>
+    <div id="hunger-bar"></div>
+  </div>
+  <script src="three.min.js"></script>
+  <script src="PointerLockControls.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
